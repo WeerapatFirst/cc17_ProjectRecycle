@@ -6,9 +6,11 @@ const LoginPage = lazy(() => import("../pages/LoginPage"));
 const RegisterPage = lazy(() => import("../pages/RegisterPage"));
 const HomePage = lazy(() => import("../pages/HomePage"));
 const MainContainer = lazy(() => import("../layouts/MainContainer"));
-const OrderForm = lazy(() => import("../features/components/OrderForm"));
 const CartForm = lazy(() => import("../features/components/CartForm"));
 const BuyForm = lazy(() => import("../features/components/BuyForm"));
+const OrderHistoryForm = lazy(() =>
+  import("../features/components/OrderHistoryForm")
+);
 
 const route = createBrowserRouter([
   {
@@ -18,7 +20,7 @@ const route = createBrowserRouter([
       { path: "/", element: <HomePage /> },
       { path: "/buy", element: <BuyForm /> },
       { path: "/cart", element: <CartForm /> },
-      { path: "/orders", element: <OrderForm /> },
+      { path: "/orders", element: <OrderHistoryForm /> },
     ],
   },
 

@@ -17,5 +17,7 @@ const productRouter = express.Router();
 // วันที่ 13-06-67
 productRouter.post("/", productController.createProduct);
 productRouter.delete("/:id", productController.deleteProduct);
+productRouter.get("/cart/:userId", productController.getCartProducts);
+productRouter.delete("/clear/:userId", productController.clearCart);
 
 module.exports = productRouter;

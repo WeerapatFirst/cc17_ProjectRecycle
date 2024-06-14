@@ -7,9 +7,7 @@ productController.createProduct = async (req, res, next) => {
   const { name, weight, price, userId } = req.body;
 
   if (!name || !weight || !price || !userId) {
-    return res.status(400).json({
-      message: "ข้อมูลไม่ครบ",
-    });
+    return res.status(400).json({ message: "ข้อมูลไม่ครบ" });
   }
 
   try {
@@ -18,9 +16,7 @@ productController.createProduct = async (req, res, next) => {
     const parsedUserId = parseInt(userId);
 
     if (isNaN(parsedWeight) || isNaN(parsedPrice) || isNaN(parsedUserId)) {
-      return res.status(400).json({
-        message: "ข้อมูลไม่ถูกต้อง",
-      });
+      return res.status(400).json({ message: "ข้อมูลไม่ถูกต้อง" });
     }
 
     const product = await prisma.product.create({
@@ -41,6 +37,28 @@ productController.deleteProduct = async (req, res, next) => {
   const { id } = req.params;
 
   try {
+    const parsedId = parseInt(id);
+    if (isNaN(parsedId)) {
+      return res.status(400).json({ message: "ID ไม่ถูกต้อง" });
+    }
+
+    const product = await prisma.product.delete({
+      where: { id: parsedId },
+    });
+    res.status(200).json({ message: "ลบสินค้าสำเร็จ", product });
+  } catch (error) {
+    if (error.code === "P2025") {
+      res.status(404).json({ message: "Product not found" });
+    } else {
+      next(error);
+    }
+  }
+};
+
+productController.deleteProduct = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
     const product = await prisma.product.delete({
       where: { id: parseInt(id) },
     });
@@ -51,6 +69,31 @@ productController.deleteProduct = async (req, res, next) => {
     } else {
       next(error);
     }
+  }
+};
+
+productController.getCartProducts = async (req, res, next) => {
+  const userId = parseInt(req.params.userId);
+
+  try {
+    const products = await prisma.product.findMany({
+      where: { userId },
+    });
+    res.status(200).json(products);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// 13-06-67 ทำไว้ล้างตะกร้า
+productController.clearCart = async (req, res, next) => {
+  const { userId } = req.params;
+
+  try {
+    await userService.clearCart(parseInt(userId, 10));
+    res.status(200).json({ message: "ล้างตะกร้าสำเร็จ" });
+  } catch (error) {
+    next(error);
   }
 };
 

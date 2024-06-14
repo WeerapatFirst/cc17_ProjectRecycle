@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import productApi from "../../apis/product";
+import useUser from "../../hooks/useUser";
 
 // export default function BuyForm() {
 //   const items1 = [
@@ -438,9 +439,11 @@ export default function BuyForm() {
   const [cart, setCart] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [quantity, setQuantity] = useState(0);
+  const { authUser: user } = useUser();
 
   const navigate = useNavigate();
 
+  // ใช้ปัจจุบัน 13-06-67
   const addItemToCart = async () => {
     if (!selectedItem || quantity <= 0) {
       alert("กรุณาเลือกประเภทสินค้าและระบุจำนวนที่ถูกต้อง");
@@ -449,12 +452,10 @@ export default function BuyForm() {
 
     const newItem = {
       name: selectedItem.type,
-      weight: selectedItem.unit,
+      weight: quantity, // ใส่น้ำหนักที่เหมาะสม
       price: selectedItem.price,
-      userId: 1, // หรือค่า userId จาก context หรือ state ที่เก็บค่าผู้ใช้ปัจจุบัน
+      userId: user.id, // หรือค่า userId จาก context หรือ state ที่เก็บค่าผู้ใช้ปัจจุบัน
     };
-
-    console.log("New item to be added:", newItem); // เพิ่มการตรวจสอบข้อมูลก่อนส่ง
 
     try {
       const response = await productApi.addProduct(newItem);
@@ -463,13 +464,27 @@ export default function BuyForm() {
       setOpen(false);
       navigate("/cart", { state: { cart: [...cart, productWithId] } });
     } catch (error) {
-      console.error("เพิ่มสินค้าไม่สำเร็จ :", error);
+      console.error("เพิ่มสินค้าไม่สำเร็จ:", error);
       alert(
         "เพิ่มสินค้าไม่สำเร็จ: " +
           (error.response?.data?.message || error.message)
       );
     }
   };
+
+  // ทดสอบ
+  // const addItemToCart = async () => {
+  //   const newItem = { ...selectedItem, quantity, userId: 1 }; // กำหนด userId ตามต้องการ
+  //   try {
+  //     const response = await productApi.addProduct(newItem);
+  //     const productWithId = response.data;
+  //     setCart((prevCart) => [...prevCart, productWithId]);
+  //     setOpen(false);
+  //     navigate("/cart", { state: { cart: [...cart, productWithId] } });
+  //   } catch (error) {
+  //     console.error("เพิ่มสินค้าไม่สำเร็จ :", error);
+  //   }
+  // };
 
   return (
     <section className="container mx-auto mt-16 bg-white p-6 rounded-lg shadow-lg">
@@ -499,11 +514,13 @@ export default function BuyForm() {
             </tr>
           ))}
         </tbody>
+      </table>
 
+      <table className="min-w-full bg-white">
         <thead>
           <tr>
             <th className="py-2 px-4 bg-gray-200">ลำดับที่</th>
-            <th className="py-2 px-4 bg-gray-200">ประเภทเศษเหล็ก</th>
+            <th className="py-2 px-4 bg-gray-200">ประเภทเหล็กเส้น</th>
             <th className="py-2 px-4 bg-gray-200">หน่วย</th>
             <th className="py-2 px-4 bg-gray-200">ราคา</th>
           </tr>
@@ -518,11 +535,13 @@ export default function BuyForm() {
             </tr>
           ))}
         </tbody>
+      </table>
 
+      <table className="min-w-full bg-white">
         <thead>
           <tr>
             <th className="py-2 px-4 bg-gray-200">ลำดับที่</th>
-            <th className="py-2 px-4 bg-gray-200">ประเภทกระดาษ</th>
+            <th className="py-2 px-4 bg-gray-200">ประเภทกกระดาษ</th>
             <th className="py-2 px-4 bg-gray-200">หน่วย</th>
             <th className="py-2 px-4 bg-gray-200">ราคา</th>
           </tr>
@@ -564,7 +583,6 @@ export default function BuyForm() {
                 ))}
               </select>
             </div>
-
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">จำนวน</label>
               <input
