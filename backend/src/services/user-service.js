@@ -87,21 +87,21 @@ userService.createCart = (userId) =>
 // };
 
 // ทดสอบ 13-06-67 ใช้งานได้
-userService.addItemToCart = async (cartId, productId, quantity) => {
-  const product = await prisma.product.findUnique({ where: { id: productId } });
-  if (!product) throw new Error(`ไม่มีสินค้าที่มีรหัสนี้ ${productId} `);
+// userService.addItemToCart = async (cartId, productId, quantity) => {
+//   const product = await prisma.product.findUnique({ where: { id: productId } });
+//   if (!product) throw new Error(`ไม่มีสินค้าที่มีรหัสนี้ ${productId} `);
 
-  const quantityNumber = parseInt(quantity, 10);
-  if (isNaN(quantityNumber)) throw new Error("quantity ต้องเป็นตัวเลขเท่านั้น");
+//   const quantityNumber = parseInt(quantity, 10);
+//   if (isNaN(quantityNumber)) throw new Error("quantity ต้องเป็นตัวเลขเท่านั้น");
 
-  return prisma.cartItem.create({
-    data: {
-      cartId,
-      productId,
-      quantity: quantityNumber,
-    },
-  });
-};
+//   return prisma.cartItem.create({
+//     data: {
+//       cartId,
+//       productId,
+//       quantity: quantityNumber,
+//     },
+//   });
+// };
 
 // ทดสอบ 14-06-67
 userService.addItemToCart = async (cartId, items) => {
@@ -178,7 +178,7 @@ userService.clearCart = async (userId) => {
   }
 };
 
-// วันที่ 13-06-67
+// วันที่ 13-06-67 เข้าถึงข้อมูลแต่ละตารางเพื่อดึงไปใช้งานหน้า ประวัติการสั่งซื้อ
 userService.getOrderHistory = async (userId) => {
   return prisma.taskOrder.findMany({
     where: {
