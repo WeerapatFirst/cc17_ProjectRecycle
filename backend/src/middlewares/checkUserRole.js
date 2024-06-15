@@ -12,6 +12,10 @@ const checkUserRole = async (req, res, next) => {
     return res.status(401).json({ message: "ไม่พบผู้ใช้งาน" });
   }
 
+  if (!user.isAdmin) {
+    return res.status(403).json({ message: "ไม่มีสิทธิ์เข้าถึงหน้านี้" });
+  }
+
   req.isAdmin = user.isAdmin;
   next();
 };

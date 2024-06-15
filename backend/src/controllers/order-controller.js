@@ -60,6 +60,17 @@ orderController.createOrder = async (req, res, next) => {
   }
 };
 
+orderController.getOrderHistory = async (req, res, next) => {
+  const { userId } = req.params;
+
+  try {
+    const orderHistory = await userService.getOrderHistory(userId);
+    res.status(200).json(orderHistory);
+  } catch (error) {
+    next(error);
+  }
+};
+
 // วันที่ 13-06-67 ประวัติสั่งซื้อ
 orderController.getOrderHistory = async (req, res, next) => {
   const { userId } = req.params;

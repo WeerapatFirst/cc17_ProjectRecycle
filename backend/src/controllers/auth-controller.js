@@ -76,9 +76,9 @@ authController.register = async (req, res, next) => {
 
 authController.login = async (req, res, next) => {
   try {
-    const existUesr = await userService.findEmail(req.input.email);
+    const existUser = await userService.findEmail(req.input.email);
 
-    if (!existUesr) {
+    if (!existUser) {
       createError({
         message: "ไม่พบอีเมลหรือรหัสผ่านที่กรอกเข้ามา",
         statusCode: 400,
@@ -87,7 +87,7 @@ authController.login = async (req, res, next) => {
 
     const isMatch = await hashService.compare(
       req.input.password,
-      existUesr.password
+      existUser.password
     );
 
     if (!isMatch) {
@@ -97,7 +97,7 @@ authController.login = async (req, res, next) => {
       });
     }
 
-    const accessToken = jwtService.sign({ id: existUesr.id });
+    const accessToken = jwtService.sign({ id: existUser.id });
     res.status(200).json({ accessToken });
   } catch (error) {
     next(error);

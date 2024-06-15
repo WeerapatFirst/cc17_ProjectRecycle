@@ -9,6 +9,7 @@ const errorMiddleware = require("./middlewares/error");
 const authenticate = require("./middlewares/authenticate");
 const productRouter = require("./routes/product-route");
 const cartRouter = require("./routes/cart-route");
+const adminRouter = require("./routes/admin-route");
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,9 @@ app.use("/products", productRouter);
 
 // วันที่ 13-06-67
 app.use("cart", authenticate, cartRouter);
+
+// วันที่ 14-06-67 ส่วนของ admin
+app.use("/admin", authenticate, adminRouter);
 
 app.use(errorMiddleware);
 
