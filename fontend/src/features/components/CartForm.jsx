@@ -91,7 +91,7 @@ export default function CartForm() {
       userId: user.id,
       items: cart.map((item) => ({
         productId: item.productId || item.id,
-        quantity: parseInt(item.quantity || item.weight), // quantity ควรเป็นจำนวนเต็มอยู่แล้ว
+        quantity: parseInt(item.quantity || item.weight), // quantity ควรเป็นจำนวนเต็ม
       })),
       deliveryDate,
       address,

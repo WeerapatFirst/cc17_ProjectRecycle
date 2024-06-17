@@ -18,7 +18,7 @@ export default function OrderHistoryForm() {
     };
 
     fetchOrderHistory();
-  }, [user.id]);
+  }, []);
 
   return (
     <section className="container mx-auto mt-16 bg-white p-6 rounded-lg shadow-lg">

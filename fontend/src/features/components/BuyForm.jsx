@@ -489,12 +489,14 @@ export default function BuyForm() {
   return (
     <section className="container mx-auto mt-16 bg-white p-6 rounded-lg shadow-lg">
       <h2 className="text-4xl font-bold mb-4 text-center">ราคารับซื้อ</h2>
-      <button
-        className="bg-blue-500 float-end text-white text-lg px-4 p-2 mb-2 rounded-md hover:bg-blue-700"
-        onClick={() => setOpen(true)}
-      >
-        เพิ่มสินค้า
-      </button>
+      {user && (
+        <button
+          className="bg-blue-500 float-end text-white text-lg px-4 p-2 mb-2 rounded-md hover:bg-blue-700"
+          onClick={() => setOpen(true)}
+        >
+          เพิ่มสินค้า
+        </button>
+      )}
       <table className="min-w-full bg-white">
         <thead>
           <tr>

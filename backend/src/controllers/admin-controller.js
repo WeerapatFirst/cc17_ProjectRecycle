@@ -32,7 +32,7 @@ adminController.deleteOrder = async (req, res, next) => {
 
   try {
     await adminService.deleteOrder(orderId);
-    res.status(200).json({ message: "Order deleted successfully" });
+    res.status(200).json({ message: "ลบคำสั่งซื้อเรียบร้อย" });
   } catch (error) {
     next(error);
   }

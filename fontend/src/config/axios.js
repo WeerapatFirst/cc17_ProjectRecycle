@@ -22,8 +22,12 @@ axios.interceptors.response.use(
   (error) => {
     if (error.response.status === 401) {
       removeAccessToken();
+      alert("กรุณาล็อกอินก่อนเข้าถึงหน้านี้");
       window.location.assign("/login");
-      return;
+      // return;
+    } else if (error.response.status === 403) {
+      alert("ไม่สามารถเข้าถึงได้");
+      window.location.assign("/");
     }
     return Promise.reject(error);
   }
