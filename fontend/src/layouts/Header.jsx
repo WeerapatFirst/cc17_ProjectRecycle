@@ -9,41 +9,68 @@ export default function Header() {
     <nav className="bg-white shadow">
       <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         {/* Logo */}
-        <div className="flex items-center text-green-500 font-bold text-3xl gap-2 animate-pulse">
+        <div className="flex items-center text-green-600 font-serif font-bold text-[50px] gap-2 animate-pulse">
           <RecycleIcon />
-          Recycle
+          <Link to="/">Recycle</Link>
         </div>
 
         {authUser && authUser.isAdmin ? (
           <div className="flex space-x-4">
-            <Link to="/" className="text-gray-700 hover:text-gray-900">
+            <Link
+              to="/"
+              className="text-gray-400 hover:text-green-700 p-4 font-semibold"
+            >
               หน้าหลัก
             </Link>
-            <Link to="/buy" className="text-gray-700 hover:text-gray-900">
+            <Link
+              to="/buy"
+              className="text-gray-400 hover:text-green-700 p-4 font-semibold"
+            >
               รับซื้อ
             </Link>
-            <Link to="/cart" className="text-gray-700 hover:text-gray-900">
+            <Link
+              to="/cart"
+              className="text-gray-400 hover:text-green-700 p-4 font-semibold"
+            >
               ตะกร้า
             </Link>
-            <Link to="/orders" className="text-gray-700 hover:text-gray-900">
+            <Link
+              to="/orders"
+              className="text-gray-400 hover:text-green-700 p-4 font-semibold"
+            >
               ประวัติการสั่งซื้อ
             </Link>
-            <Link to="/admin" className="text-gray-700 hover:text-gray-900">
+            <Link
+              to="/admin"
+              className="text-gray-400 hover:text-green-700 p-4 font-semibold"
+            >
               ประวัติการสั่งซื้อUser
             </Link>
           </div>
         ) : (
           <div className="flex space-x-4">
-            <Link to="/" className="text-gray-700 hover:text-gray-900">
+            <Link
+              to="/"
+              className="text-gray-400 hover:text-green-700 p-4 font-semibold"
+            >
               หน้าหลัก
             </Link>
-            <Link to="/buy" className="text-gray-700 hover:text-gray-900">
+            <Link
+              to="/buy"
+              className="text-gray-400 hover:text-green-700 p-4 font-semibold"
+            >
               รับซื้อ
             </Link>
-            <Link to="/cart" className="text-gray-700 hover:text-gray-900">
+            <Link
+              to="/cart"
+              className="text-gray-400 hover:text-green-700 p-4 font-semibold"
+            >
               ตะกร้า
             </Link>
-            <Link to="/orders" className="text-gray-700 hover:text-gray-900">
+            <Link
+              to="/orders"
+              className="text-gray-400 hover:text-green-700 p-4 font-semibold"
+            >
               ประวัติการสั่งซื้อ
             </Link>
           </div>
@@ -51,13 +78,13 @@ export default function Header() {
 
         {authUser ? (
           <div>
-            <button className="bg-blue-500 text-white px-4 py-2 mr-1 rounded-lg text-lg hover:bg-blue-700">
-              {authUser.firstname}
+            <button className="font-serif text-gray-400 px-4 py-2 mr-1 rounded-lg text-lg hover:text-green-900">
+              คุณ: {authUser.firstname}
             </button>
             <Link to="/">
               <button
                 onClick={() => logout()}
-                className="bg-blue-500 text-white px-4 py-2 mr-1 rounded-lg text-lg hover:bg-blue-700"
+                className="bg-green-500 text-white px-4 py-2 mr-1 rounded-lg text-lg hover:bg-green-700"
               >
                 ล็อกเอ้า
               </button>
@@ -66,12 +93,12 @@ export default function Header() {
         ) : (
           <div>
             <Link to="/register">
-              <button className="bg-blue-500 text-white px-4 py-2 mr-1 rounded-lg text-lg hover:bg-blue-700">
+              <button className="bg-green-500 text-white px-4 py-2 mr-1 rounded-lg text-lg hover:bg-green-700">
                 สมัครสมาชิก
               </button>
             </Link>
             <Link to="/login">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded-lg text-lg hover:bg-blue-700">
+              <button className="bg-green-500 text-white px-4 py-2 rounded-lg text-lg hover:bg-green-700">
                 ล็อกอิน
               </button>
             </Link>
