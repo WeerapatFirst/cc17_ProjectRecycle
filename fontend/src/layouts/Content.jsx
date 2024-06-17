@@ -99,7 +99,7 @@ export default function Content() {
                 <img
                   src="https://www.cleanlink.com/resources/editorial/2023/29913-recycle-sstock-2103583127.jpg"
                   alt="Product 1"
-                  className="w-full h-64 object-cover hover:scale-150 rounded-md"
+                  className="w-full h-64 object-cover hover:scale-150 rounded-md transition-transform duration-500"
                 />
               </div>
               <h3 className="text-2xl text-gray-400 font-bold mb-2">
@@ -114,7 +114,7 @@ export default function Content() {
                 <img
                   src="https://waste-management-world.com/imager/media/wasteManagementWorld/809014/3520_428fd902f4247199467725e7eccf1673.jpg"
                   alt="Product 2"
-                  className="w-full h-64 object-cover hover:scale-150 rounded-md"
+                  className="w-full h-64 object-cover hover:scale-150 rounded-md transition-transform duration-500"
                 />
               </div>
               <h3 className="text-2xl text-gray-400 font-bold mb-2">
@@ -129,7 +129,7 @@ export default function Content() {
                 <img
                   src="https://hq2.recyclist.co/wp-content/uploads/sites/2/2015/02/cds-300x300.jpg"
                   alt="Product 3"
-                  className="w-full h-64 object-cover hover:scale-150 rounded-md"
+                  className="w-full h-64 object-cover hover:scale-150 rounded-md transition-transform duration-500"
                 />
               </div>
               <h3 className="text-2xl text-gray-400 font-bold mb-2">
@@ -149,7 +149,7 @@ export default function Content() {
                 <img
                   src="https://tiimg.tistatic.com/fp/1/007/482/-99-9-purity-waste-material-iron-scrap-for-industrial-use-recycling-with-selective-focus-016.jpg"
                   alt="Product 1"
-                  className="w-full h-64 object-cover hover:scale-150 rounded-md"
+                  className="w-full h-64 object-cover hover:scale-150 rounded-md transition-transform duration-500"
                 />
               </div>
               <h3 className="text-2xl text-gray-400 font-bold mb-2">
@@ -164,7 +164,7 @@ export default function Content() {
                 <img
                   src="https://www.nextlevelenergy.com/cdn/shop/articles/AluminumCanWaste.jpg?v=1708446445&width=1100"
                   alt="Product 2"
-                  className="w-full h-64 object-cover hover:scale-150 rounded-md"
+                  className="w-full h-64 object-cover hover:scale-150 rounded-md transition-transform duration-500"
                 />
               </div>
               <h3 className="text-2xl text-gray-400 font-bold mb-2">
@@ -179,7 +179,7 @@ export default function Content() {
                 <img
                   src="https://images.ctfassets.net/b482wvamo5jo/5bSzifSGSuTDLmZ6xqzBF6/b03d6e811e2f8cf270765bb0b8ad0d05/_5f988541-1d98-4c0f-aabb-91862186b620.jpeg"
                   alt="Product 3"
-                  className="w-full h-64 object-cover hover:scale-150 rounded-md"
+                  className="w-full h-64 object-cover hover:scale-150 rounded-md transition-transform duration-500"
                 />
               </div>
               <h3 className="text-2xl text-gray-400 font-bold mb-2">
@@ -199,7 +199,7 @@ export default function Content() {
                 <img
                   src="https://media.istockphoto.com/id/681198734/photo/waste-paper-is-collected-and-packed-for-recycling-cardboard-and-paper-recycling.jpg?s=612x612&w=0&k=20&c=Njr1e0wYvQbKEjY2ZLiODhuAVpng6BqGyIRhOiC1s6s="
                   alt="Product 1"
-                  className="w-full h-64 object-cover hover:scale-150 rounded-md"
+                  className="w-full h-64 object-cover hover:scale-150 rounded-md transition-transform duration-500"
                 />
               </div>
               <h3 className="text-2xl text-gray-400 font-bold mb-2">
@@ -214,7 +214,7 @@ export default function Content() {
                 <img
                   src="https://cleanstreets.westminster.gov.uk/hubfs/Imported_Blog_Media/shutterstock_474668344-1.jpg#keepProtocol"
                   alt="Product 2"
-                  className="w-full h-64 object-cover hover:scale-150 rounded-md"
+                  className="w-full h-64 object-cover hover:scale-150 rounded-md transition-transform duration-500"
                 />
               </div>
               <h3 className="text-2xl text-gray-400 font-bold mb-2">
@@ -229,7 +229,7 @@ export default function Content() {
                 <img
                   src="https://www.rubicon.com/wp-content/uploads/2022/01/newspaper-bundles-for-paper-recycling.jpg"
                   alt="Product 3"
-                  className="w-full h-64 object-cover hover:scale-150 rounded-md"
+                  className="w-full h-64 object-cover hover:scale-150 rounded-md transition-transform duration-500"
                 />
               </div>
               <h3 className="text-2xl text-gray-400 font-bold mb-2">

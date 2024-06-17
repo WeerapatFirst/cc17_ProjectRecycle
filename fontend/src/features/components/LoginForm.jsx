@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
 // import authApi from "../../apis/auth";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const initialInput = {
   email: "",
@@ -59,7 +60,8 @@ export default function LoginForm() {
 
       await login(input);
 
-      alert("ล็อกอินสำเร็จ");
+      // alert("ล็อกอินสำเร็จ");
+      toast.success("ล็อกอินสำเร็จ");
       navigate("/");
     } catch (error) {
       console.log(error);

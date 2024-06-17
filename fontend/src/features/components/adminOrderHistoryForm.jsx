@@ -112,6 +112,7 @@
 import { useEffect, useState } from "react";
 import adminApi from "../../apis/admin";
 import useUser from "../../hooks/useUser";
+import { toast } from "react-toastify";
 
 export default function OrderHistoryAdmin() {
   const { authUser: user } = useUser();
@@ -149,10 +150,13 @@ export default function OrderHistoryAdmin() {
       setEditStatus("");
       const response = await adminApi.getAllOrders();
       setOrderHistory(response.data);
-      alert("อัปเดตสถานะสำเร็จ");
+
+      toast.success("อัปเดตสถานะสำเร็จ");
+      // alert("อัปเดตสถานะสำเร็จ");
     } catch (error) {
       console.error("อัปเดตสถานะไม่สำเร็จ:", error);
-      alert("อัปเดตสถานะไม่สำเร็จ");
+      // alert("อัปเดตสถานะไม่สำเร็จ");
+      toast.error("อัปเดตสถานะไม่สำเร็จ");
     }
   };
 
@@ -162,10 +166,12 @@ export default function OrderHistoryAdmin() {
       try {
         await adminApi.deleteOrder(orderId);
         setOrderHistory(orderHistory.filter((order) => order.id !== orderId));
-        alert("ลบข้อมูลสั่งซื้อสำเร็จ");
+        // alert("ลบข้อมูลสั่งซื้อสำเร็จ");
+        toast.success("ลบข้อมูลสั่งซื้อสำเร็จ");
       } catch (error) {
         console.error("ไม่สามารถลบข้อมูลได้:", error);
-        alert("ลบข้อมูลสั่งไม่ซื้อสำเร็จ");
+        // alert("ลบข้อมูลสั่งไม่ซื้อสำเร็จ");
+        toast.error("ลบข้อมูลสั่งไม่ซื้อสำเร็จ");
       }
     }
   };

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import orderApi from "../../apis/order";
 import productApi from "../../apis/product";
 import useUser from "../../hooks/useUser";
+import { toast } from "react-toastify";
 
 // วันที่ 13-06-67 ทดสอบ+แก้ไข
 export default function CartForm() {
@@ -55,10 +56,12 @@ export default function CartForm() {
       setCart(newCart);
 
       // แจ้งเตือน
-      alert(`ลบสินค้าในฐานข้อมูลสำเร็จ: ${itemToRemove.type}`);
+      // alert("ลบสินค้าสำเร็จ");
+      toast.success("ลบสินค้าสำเร็จ");
     } catch (error) {
       console.error("ลบสินค้าไม่สำเร็จ:", error);
-      alert("ลบสินค้าไม่สำเร็จ");
+      // alert("ลบสินค้าไม่สำเร็จ");
+      toast.error("ลบสินค้าไม่สำเร็จ");
     }
   };
 
@@ -99,12 +102,14 @@ export default function CartForm() {
 
     try {
       await orderApi.createOrder(orderData);
-      alert("สั่งซื้อสินค้าสำเร็จ");
+      // alert("สั่งซื้อสินค้าสำเร็จ");
+      toast.success("สั่งซื้อสินค้าสำเร็จ");
       setCart([]); // ล้างตะกร้าหลังจากสั่งซื้อสำเร็จ
       navigate("/orders");
     } catch (error) {
       console.error("สั่งซื้อไม่สำเร็จ:", error);
-      alert("สั่งซื้อไม่สำเร็จ");
+      // alert("สั่งซื้อไม่สำเร็จ");
+      toast.error("สั่งซื้อไม่สำเร็จ");
     }
   };
 
@@ -166,7 +171,7 @@ export default function CartForm() {
 
       <div className="flex justify-end">
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg text-lg hover:bg-blue-700"
+          className="bg-green-500 text-white px-4 py-2 rounded-lg text-lg hover:bg-green-700"
           onClick={handleOrderSubmit}
         >
           ยืนยันการสั่งซื้อ

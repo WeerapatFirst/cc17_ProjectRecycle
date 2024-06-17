@@ -4,6 +4,7 @@ import validateRegister from "../validators/validate-register";
 import authApi from "../../apis/auth";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 // import { Navigate } from "react-router-dom";
 
 const initialInput = {
@@ -47,7 +48,8 @@ export default function RegisterForm() {
 
       await authApi.register(input);
 
-      alert("สมัครสมาชิกสำเร็จ");
+      // alert("สมัครสมาชิกสำเร็จ");
+      toast.success("สมัครสมาชิกสำเร็จ");
       navigate("/login");
     } catch (error) {
       if (error instanceof AxiosError) {

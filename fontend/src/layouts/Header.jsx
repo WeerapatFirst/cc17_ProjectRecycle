@@ -6,10 +6,10 @@ export default function Header() {
   const { logout, authUser } = useAuth();
   // console.log(authUser);
   return (
-    <nav className="bg-white shadow">
+    <nav className="bg-white shadow-2xl">
       <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         {/* Logo */}
-        <div className="flex items-center text-green-600 font-serif font-bold text-[50px] gap-2 animate-pulse">
+        <div className="flex items-center text-green-600 font-serif font-bold text-[50px] gap-2 ">
           <RecycleIcon />
           <Link to="/">Recycle</Link>
         </div>
@@ -91,7 +91,7 @@ export default function Header() {
             </Link>
           </div>
         ) : (
-          <div>
+          <div className="flex">
             <Link to="/register">
               <button className="bg-green-500 text-white px-4 py-2 mr-1 rounded-lg text-lg hover:bg-green-700">
                 สมัครสมาชิก

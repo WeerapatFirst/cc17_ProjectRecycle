@@ -2,6 +2,8 @@ import axios from "axios";
 
 import { getAccessToken, removeAccessToken } from "../utils/local-storage";
 
+import { toast } from "react-toastify";
+
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 axios.interceptors.request.use(
@@ -22,11 +24,13 @@ axios.interceptors.response.use(
   (error) => {
     if (error.response.status === 401) {
       removeAccessToken();
-      alert("กรุณาล็อกอินก่อนเข้าถึงหน้านี้");
+      toast.error("กรุณาล็อกอินก่อนเข้าถึงหน้านี้");
+      // alert("กรุณาล็อกอินก่อนเข้าถึงหน้านี้");
       window.location.assign("/login");
       // return;
     } else if (error.response.status === 403) {
-      alert("ไม่สามารถเข้าถึงได้");
+      toast.error("ไม่สามารถเข้าถึงได้");
+      // alert("ไม่สามารถเข้าถึงได้");
       window.location.assign("/");
     }
     return Promise.reject(error);
