@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
+// ดักจับ
 axios.interceptors.request.use(
   (config) => {
     const accessToken = getAccessToken();
@@ -26,7 +27,7 @@ axios.interceptors.response.use(
       removeAccessToken();
       toast.error("กรุณาล็อกอินก่อนเข้าถึงหน้านี้");
       // alert("กรุณาล็อกอินก่อนเข้าถึงหน้านี้");
-      window.location.assign("/login");
+      window.location.assign("/");
       // return;
     } else if (error.response.status === 403) {
       toast.error("ไม่สามารถเข้าถึงได้");

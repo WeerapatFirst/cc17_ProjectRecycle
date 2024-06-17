@@ -1,3 +1,4 @@
+const orderService = require("../services/order-service");
 const userService = require("../services/user-service");
 const createError = require("../utils/create-error");
 
@@ -93,6 +94,21 @@ orderController.clearCart = async (req, res, next) => {
     next(error);
   }
 };
+
+// 17-06-67 ส่วนของหน้า admin ค้นหา user
+// orderController.getOrdersByUserId = async (req, res, next) => {
+//   const { userId } = req.params;
+
+//   try {
+//     const orders = await orderService.getOrdersByUserId(userId);
+//     if (!orders) {
+//       return res.status(404).json({ message: "ไม่พบคำสั่งซื้อ" });
+//     }
+//     res.status(200).json(orders);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
 // วันที่ 12-06-67 ใช้ปัจจุบัน
 // orderController.createOrder = async (req, res, next) => {

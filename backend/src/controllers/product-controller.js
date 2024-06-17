@@ -48,29 +48,30 @@ productController.deleteProduct = async (req, res, next) => {
     res.status(200).json({ message: "ลบสินค้าสำเร็จ", product });
   } catch (error) {
     if (error.code === "P2025") {
-      res.status(404).json({ message: "Product not found" });
+      res.status(404).json({ message: "ไม่พบสินค้า" });
     } else {
       next(error);
     }
   }
 };
 
-productController.deleteProduct = async (req, res, next) => {
-  const { id } = req.params;
+// ***** 17-06-67
+// productController.deleteProduct = async (req, res, next) => {
+//   const { id } = req.params;
 
-  try {
-    const product = await prisma.product.delete({
-      where: { id: parseInt(id) },
-    });
-    res.status(200).json({ message: "ลบสินค้าสำเร็จ", product });
-  } catch (error) {
-    if (error.code === "P2025") {
-      res.status(404).json({ message: "Product not found" });
-    } else {
-      next(error);
-    }
-  }
-};
+//   try {
+//     const product = await prisma.product.delete({
+//       where: { id: parseInt(id) },
+//     });
+//     res.status(200).json({ message: "ลบสินค้าสำเร็จ", product });
+//   } catch (error) {
+//     if (error.code === "P2025") {
+//       res.status(404).json({ message: "Product not found" });
+//     } else {
+//       next(error);
+//     }
+//   }
+// };
 
 productController.getCartProducts = async (req, res, next) => {
   const userId = parseInt(req.params.userId);

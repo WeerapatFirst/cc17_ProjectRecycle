@@ -7,7 +7,7 @@ const authenticate = async (req, res, next) => {
     const authorization = req.headers.authorization;
     if (!authorization || !authorization.startsWith("Bearer ")) {
       createError({
-        message: "unauthenticated",
+        message: "ไม่ผ่านการรับรองความถูกต้อง",
         statusCode: 401,
       });
     }
@@ -18,7 +18,7 @@ const authenticate = async (req, res, next) => {
     const user = await userService.findUserById(payload.id);
     if (!user) {
       createError({
-        message: "user was not found",
+        message: "ไม่พบผู้ใช้งาน",
         statusCode: 400,
       });
     }

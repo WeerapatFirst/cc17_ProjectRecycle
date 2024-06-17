@@ -77,7 +77,7 @@ export default function Header() {
         )}
 
         {authUser ? (
-          <div>
+          <div className="flex">
             <button className="font-serif text-gray-400 px-4 py-2 mr-1 rounded-lg text-lg hover:text-green-900">
               คุณ: {authUser.firstname}
             </button>

@@ -108,7 +108,7 @@
 // }
 
 // ----------------------------------------------------------------
-// ทดสอบ
+// 17-06-67 ใช้งานปัจจบุัน
 import { useEffect, useState } from "react";
 import adminApi from "../../apis/admin";
 import useUser from "../../hooks/useUser";
@@ -132,7 +132,7 @@ export default function OrderHistoryAdmin() {
     };
 
     fetchOrderHistory();
-  }, [user.id]);
+  }, [user]);
 
   const handleEditClick = (orderId, currentStatus) => {
     setEditOrderId(orderId);
@@ -262,3 +262,5 @@ export default function OrderHistoryAdmin() {
     </section>
   );
 }
+
+// *****************************

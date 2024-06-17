@@ -12,7 +12,7 @@ export default function CartForm() {
   const [cart, setCart] = useState(
     location.state?.cart.map((item) => ({
       ...item,
-      productId: item.id, // แมปค่า productId จาก id (ถ้า id เป็นตัวยืนยัน ของ product)
+      productId: item.id, // แมปค่า productId จาก id (id เป็นตัวยืนยัน ของ product)
     })) || []
   );
 
