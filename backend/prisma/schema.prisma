@@ -15,9 +15,9 @@ datasource db {
 
 model Dashboard {
   id          Int    @id @default(autoincrement())
-  header      String
-  image       String
-  title       String
+  header      String // name String
+  image       String // quantity
+  title       String // price decimal
   description String
 }
 
