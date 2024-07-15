@@ -1,4 +1,5 @@
 const prisma = require("../models/prisma");
+const productService = require("../services/product-service");
 
 const productController = {};
 
@@ -97,29 +98,5 @@ productController.clearCart = async (req, res, next) => {
     next(error);
   }
 };
-
-// วันที่ 12-06-67 ใช้ปุจจุบัน
-// productController.deleteProduct = async (req, res, next) => {
-//   const { id } = req.params;
-
-//   try {
-//     const product = await prisma.product.findUnique({
-//       where: { id: Number(id) },
-//     });
-
-//     if (!product) {
-//       return res.status(404).json({ message: "ไม่พบสินค้า" });
-//     }
-//     console.log(product);
-
-//     await prisma.product.delete({
-//       where: { id: Number(id) },
-//     });
-
-//     res.status(204).json();
-//   } catch (error) {
-//     next(error);
-//   }
-// };
 
 module.exports = productController;

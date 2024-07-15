@@ -10,6 +10,7 @@ const authenticate = require("./middlewares/authenticate");
 const productRouter = require("./routes/product-route");
 const cartRouter = require("./routes/cart-route");
 const adminRouter = require("./routes/admin-route");
+const productListRouter = require("./routes/productList-route");
 
 const app = express();
 app.use(cors());
@@ -20,6 +21,8 @@ app.use("/auth", authRouter);
 // วันที่ 12-06-67
 app.use("/orders", authenticate, orderRouter);
 app.use("/products", productRouter);
+
+app.use("/products-List", productListRouter);
 
 // วันที่ 13-06-67
 app.use("cart", authenticate, cartRouter);

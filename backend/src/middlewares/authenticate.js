@@ -2,6 +2,7 @@ const jwtService = require("../services/jwt-service");
 const userService = require("../services/user-service");
 const createError = require("../utils/create-error");
 
+// -------- ใช้ปัจจุบัน
 const authenticate = async (req, res, next) => {
   try {
     const authorization = req.headers.authorization;

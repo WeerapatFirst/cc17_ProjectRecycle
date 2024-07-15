@@ -11,6 +11,17 @@ const checkUserRole = (req, res, next) => {
 
 module.exports = checkUserRole;
 
+// ******************************
+// const checkUserRole = (req, res, next) => {
+//   if (req.user && req.user.isAdmin) {
+//     next();
+//   } else {
+//     return res.redirect("/"); // เปลี่ยนเส้นทางไปที่หน้าหลัก
+//   }
+// };
+
+// module.exports = checkUserRole;
+
 // 14-06-67 เช็คไอดีที่ล็อกอินเข้ามาว่าเป็น user หรือ admin ใช้ปัจจุบัน
 // const prisma = require("../models/prisma");
 

@@ -7,7 +7,7 @@ import {
   setAccessToken,
 } from "../utils/local-storage";
 import { useEffect } from "react";
-// import userApi from "../apis/auth";
+// import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
@@ -18,6 +18,7 @@ export const AuthContext = createContext();
 export default function AuthContextProvider({ children }) {
   const [authUser, setAuthUser] = useState(null);
   const [isAuthUserLoading, setIsAuthUserLoading] = useState(true);
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -63,6 +64,8 @@ export default function AuthContextProvider({ children }) {
   const logout = () => {
     removeAccessToken();
     setAuthUser(null);
+    localStorage.removeItem("cart");
+    // navigate("/");
   };
 
   // const updateAuthUser = async (formData) => {

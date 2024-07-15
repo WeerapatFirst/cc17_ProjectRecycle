@@ -2,6 +2,7 @@ import { lazy } from "react";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AdminPage from "../pages/AdminPage";
+import AdminAddProduct from "../features/components/adminAddProductForm";
 
 const LoginPage = lazy(() => import("../pages/LoginPage"));
 const RegisterPage = lazy(() => import("../pages/RegisterPage"));
@@ -23,6 +24,7 @@ const route = createBrowserRouter([
       { path: "/cart", element: <CartForm /> },
       { path: "/orders", element: <OrderHistoryForm /> },
       { path: "/admin", element: <AdminPage /> },
+      { path: "/admin/add-product", element: <AdminAddProduct /> },
     ],
   },
 
