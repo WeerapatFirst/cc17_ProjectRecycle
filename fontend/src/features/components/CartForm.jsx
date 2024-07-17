@@ -531,13 +531,13 @@ export default function CartForm() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (location.state?.cart) {
+    if (location.state?.cart) { // ทำงานเมื่อ state มีการเปลี่ยนแปลงจะตรวตสอบว่ามี ตะกร้า อยู่ใน state ไหม 
       setCart(location.state.cart);
     }
   }, [location.state]);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart)); // ใช้บันทึกลงใน ตะกร้า localStorage
   }, [cart]);
 
   const removeItem = async (index) => {
